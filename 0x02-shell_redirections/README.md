@@ -4,3 +4,4 @@
 
 2-hellofile: displays the content in /etc/passwd 
 
+3-twofiles: display contents of '/etc/passwd' and '/etc/hosts'
