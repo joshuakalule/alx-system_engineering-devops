@@ -32,3 +32,5 @@
 
 17-hidethisword: only show files that do not contain 'bin'
 
+18-letteronly: only displays lines that start with a letter in the file 'etc/ssh/sshd_config'
+
