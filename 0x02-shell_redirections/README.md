@@ -13,3 +13,6 @@
 7-file: creates a file conatining text
 
 8-cwd_state: write the output of ls -la to file
+
+9-duplicate_last_line: duplicates the last line of a file
+
