@@ -20,3 +20,5 @@
 
 11-directories: count all directories and sub-directories excluding the current and parent directories
 
+12-newest_files: prints the last 10 modified files
+
