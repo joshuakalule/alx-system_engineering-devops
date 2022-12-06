@@ -34,3 +34,5 @@
 
 18-letteronly: only displays lines that start with a letter in the file 'etc/ssh/sshd_config'
 
+19-AZ: replaces A with Z, and c with e in a given input
+
