@@ -24,3 +24,5 @@
 
 13-unique: displays words that are not repeated
 
+14-findthatword: prints lines with the word 'root'
+
