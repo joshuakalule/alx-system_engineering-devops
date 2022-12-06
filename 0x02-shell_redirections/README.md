@@ -18,3 +18,5 @@
 
 10-no_more_js: recursively remove all files with '.js' extension
 
+11-directories: count all directories and sub-directories excluding the current and parent directories
+
