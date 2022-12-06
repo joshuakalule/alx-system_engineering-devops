@@ -30,3 +30,5 @@
 
 16-whatsnext: displays lines with a match and 3 lines after them
 
+17-hidethisword: only show files that do not contain 'bin'
+
