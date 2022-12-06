@@ -26,3 +26,5 @@
 
 14-findthatword: prints lines with the word 'root'
 
+15-countthatword: prints the number of lines with the word 'bin' in the file /etc/passwd
+
