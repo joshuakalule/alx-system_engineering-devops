@@ -10,3 +10,5 @@
 
 5-firstlines: display first 10 lines in '/etc/passwd'
 
+7-file: creates a file conatining text
+
