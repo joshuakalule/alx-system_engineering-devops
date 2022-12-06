@@ -28,3 +28,5 @@
 
 15-countthatword: prints the number of lines with the word 'bin' in the file /etc/passwd
 
+16-whatsnext: displays lines with a match and 3 lines after them
+
