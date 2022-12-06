@@ -16,3 +16,5 @@
 
 9-duplicate_last_line: duplicates the last line of a file
 
+10-no_more_js: recursively remove all files with '.js' extension
+
