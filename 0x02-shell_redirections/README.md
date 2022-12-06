@@ -12,3 +12,4 @@
 
 7-file: creates a file conatining text
 
+8-cwd_state: write the output of ls -la to file
