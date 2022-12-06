@@ -22,3 +22,5 @@
 
 12-newest_files: prints the last 10 modified files
 
+13-unique: displays words that are not repeated
+
