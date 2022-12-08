@@ -5,3 +5,5 @@
 2-path: adds to PATH
 
 3-paths: count the directories in PATH/n
+4-global_variables: prints the global variables
+
