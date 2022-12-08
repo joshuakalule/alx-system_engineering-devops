@@ -7,3 +7,5 @@
 3-paths: count the directories in PATH/n
 4-global_variables: prints the global variables
 
+5-local_variables: prints local variables
+
