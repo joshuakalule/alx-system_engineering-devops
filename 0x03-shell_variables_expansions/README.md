@@ -11,3 +11,5 @@
 
 6-create_local_variable: creates a local varaible
 
+7-create_global_variable: sets a new global variable
+
