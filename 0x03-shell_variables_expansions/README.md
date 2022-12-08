@@ -18,3 +18,5 @@
 9-divide_and_rule: does division just/n
 10-love_exponent_breath: exhibits powers
 
+11-binary_to_decimal: binary to decimal converter
+
