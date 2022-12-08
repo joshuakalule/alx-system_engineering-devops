@@ -2,3 +2,5 @@
 
 1-hello_you: prints hello user
 
+2-path: adds to PATH
+
