@@ -4,3 +4,4 @@
 
 2-path: adds to PATH
 
+3-paths: count the directories in PATH/n
