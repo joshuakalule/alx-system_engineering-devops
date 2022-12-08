@@ -20,3 +20,5 @@
 
 11-binary_to_decimal: binary to decimal converter
 
+12-combinations: 2 letter combinations without 'oo'
+
