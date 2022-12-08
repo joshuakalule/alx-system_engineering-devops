@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e {a..z}{{a..n},{p..z}}"\n"
+echo -e {a..z}{{a..n}"\n",{p..z}"\n"}
