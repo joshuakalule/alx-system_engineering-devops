@@ -9,3 +9,5 @@
 
 5-local_variables: prints local variables
 
+6-create_local_variable: creates a local varaible
+
