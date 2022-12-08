@@ -13,3 +13,5 @@
 
 7-create_global_variable: sets a new global variable
 
+8-true_knowledge: adds a number with a variable
+
