@@ -15,3 +15,4 @@
 
 8-true_knowledge: adds a number with a variable
 
+9-divide_and_rule: does division just/n
