@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# display the content of the current directory
+for file in *
+do
+	if [ -f "$file" ]; then
+		name="${file#*-}"
+		echo "$name"
+	fi
+done
