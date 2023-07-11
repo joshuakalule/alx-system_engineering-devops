@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# displays formated content of the /etc/passwd file
+while IFS=: read -r U PASS UI GID GECOS H SH; do
+	printf "The user %s is part of the %s gang, lives in %s " "$U" "$GID" "$H"
+	printf "and rides %s. %s's place is protected by the passcode" "$SH" "$UI"
+	printf " %s, more info about the user here: %s\n" "$PASS" "$GECOS"
+done < /etc/passwd
