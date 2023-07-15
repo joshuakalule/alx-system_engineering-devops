@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# advanced signals
+
+file="/var/run/myscript.pid"
+
+echo $$ > "$file"
+
+trap 'echo "I hate the kill command"; rm -f "$file"; exit' SIGTERM SIGQUIT
+
+trap "Y U no love me?!" SIGINT
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
