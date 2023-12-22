@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# advanced task: 10. Manage my process
+
+arg="$1"
+
+if [ -z "$arg" ]; then
+	echo "Usage: manage_my_process {start|stop|restart}"
+
+elif [ "$arg" == "start" ]; then
+	./manage_my_process &
+	echo "$!" > '/var/run/my_process.pid'
+	echo "manage_my_process started"
+
+elif [ "$arg" == "stop" ]; then
+	if [ -e "/var/run/my_process.pid" ]; then
+		kill "$(cat /var/run/my_process.pid)"
+		rm -f /var/run/my_process.pid
+	fi
+	echo "manage_my_process stopped"
+
+elif [ "$arg" == "restart" ]; then
+	"$0" stop >& /dev/null
+	"$0" start >& /dev/null
+	echo "manage_my_process restarted"
+
+else
+	echo "Usage: manage_my_process {start|stop|restart}"
+fi

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# adnvaced task: 10. Manage my process
+
+while true; do
+	echo "I am alive!" >> /tmp/my_process
+	sleep 2
+done
