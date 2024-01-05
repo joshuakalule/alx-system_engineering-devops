@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# configure ubuntu server
+
+# replace localhost
+sudo sed -i '/[[:space:]]\+localhost/c\127.0.0.2		localhost' /etc/hosts
+
+# check if 'facebook.com' entry exists, and replace it or add it at the end
+if grep -q '[[:space:]]\+facebook\.com' /etc/hosts; then
+	sudo sed -i '/[[:space:]]\+facebook\.com/c\8.8.8.8\tfacebook.com' /etc/hosts
+else
+	sudo sed -i -e '$a\8.8.8.8\t\tfacebook.com' /etc/hosts
+fi
