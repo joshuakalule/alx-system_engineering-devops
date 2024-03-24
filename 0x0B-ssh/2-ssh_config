@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 Host ubuntu
     HostName 52.206.61.240
 	IdentityFile ~/.ssh/school
