@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Install Nginx web server
 apt-get install nginx -y
 cd /etc/nginx/
 mkdir html
