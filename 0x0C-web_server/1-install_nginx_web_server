@@ -6,9 +6,9 @@ sudo apt-get install nginx -y
 mkdir /etc/nginx/html
 touch /etc/nginx/html/index.html
 
-echo "server {
+sudo echo "server {
 	listen 80 default_server;
-	root /etc/nginx/html
+	root /etc/nginx/html;
 	location / {
 		index index.htm index.html;
 	}
