@@ -1,12 +1,7 @@
 # install and configure nginx server
 
-# update pip
-exec {'update pip':
-  command => 'sudo apt-get update -y',
-}
-
 # install nginx
-package {'ngnix':
+package {'nginx':
   ensure   => installed,
 }
 
@@ -38,7 +33,7 @@ file {'index page':
 }
 
 # create not_found.html
-file {'index page':
+file {'not_found page':
   ensure  => present,
   path    => '/etc/www/html/not_found.html',
   content => "Ceci n'est pas une page",
