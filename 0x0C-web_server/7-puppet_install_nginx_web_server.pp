@@ -8,7 +8,6 @@ exec {'update pip':
 # install nginx
 package {'ngnix':
   ensure   => installed,
-  provider => 'apt',
 }
 
 $config_string = "
@@ -45,7 +44,8 @@ file {'index page':
   content => "Ceci n'est pas une page",
 }
 
-# restart nginx
-exec {'restart nginx':
-  command => 'sudo service nginx restart',
+# ensure service is up and running
+service {'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
