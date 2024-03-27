@@ -10,7 +10,7 @@ echo "server {
 
 	# redirect to another page
 	location /redirect_me {
-		return 301 https://www.bing.com/;
+		return 301 https://www.bing.com;
 	}
 
     location / {
