@@ -13,7 +13,7 @@ server {
 		return 301 https://www.bing.com;
 	}
 	location / {
-		index index.htm index.html;
+		index index.html index.htm;
 	}
 	error_page 404 /not_found.html;
 }"
