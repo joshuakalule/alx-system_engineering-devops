@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# configure Nginx web server 
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Configure nginx to listen on port 80
+echo "server {
+    listen 80 default_server;
+    root /var/www/html;
+
+	# redirect to another page
+	location /redirect_me {
+		return 301 https://www.bing.com;
+	}
+    location / {
+        index index.htm index.html;
+    }
+	error_page 404 /not_found.html;
+}" > "/etc/nginx/sites-available/default"
+
+# Create a new index.html file
+echo "Hello World!" > /var/www/html/index.html
+
+# create 404 page
+echo "Ceci n'est pas une page" > /var/www/html/not_found.html
+
+# Restart nginx without using systemctl
+sudo service nginx restart
