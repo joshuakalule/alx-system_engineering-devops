@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Set up nginx which adds custom header
-apt-get install nginx -y
+apt-get -y update
+apt-get -y install nginx
 echo "server {
     listen 80 default_server;
     root /var/www/html;
