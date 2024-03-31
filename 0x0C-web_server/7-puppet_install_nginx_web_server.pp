@@ -5,7 +5,7 @@ package {'nginx':
   ensure   => installed,
 }
 
-$config_string = "`server {
+$config_string = "server {
 	listen 80 default_server;
     root /var/www/html;
     location /redirect_me {
