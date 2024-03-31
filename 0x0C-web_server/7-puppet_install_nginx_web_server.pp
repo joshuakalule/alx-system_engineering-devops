@@ -5,8 +5,7 @@ package {'nginx':
   ensure   => installed,
 }
 
-$config_string = "
-server {
+$config_string = "`server {
 	listen 80 default_server;
     root /var/www/html;
     location /redirect_me {
@@ -28,14 +27,14 @@ file {'config_file':
 # create index.html
 file {'index page':
   ensure  => present,
-  path    => '/etc/www/html/index.html',
+  path    => '/var/www/html/index.html',
   content => 'Hello World!',
 }
 
 # create not_found.html
 file {'not_found page':
   ensure  => present,
-  path    => '/etc/www/html/not_found.html',
+  path    => '/var/www/html/not_found.html',
   content => "Ceci n'est pas une page",
 }
 
