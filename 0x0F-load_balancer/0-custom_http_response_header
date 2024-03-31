@@ -16,4 +16,4 @@ echo "server {
 }" > "/etc/nginx/sites-available/default"
 echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/not_found.html
-sudo service nginx restart
+service nginx start
