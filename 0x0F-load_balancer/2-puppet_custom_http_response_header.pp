@@ -15,8 +15,8 @@ file {'/etc/nginx/sites-available/default':
 file_line {'add_header':
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
-  line   => "        add_header X-Served-By \$HOSTNAME;",
-  after  => "\\s*root /var/www/html;"
+  line   => "\t\tadd_header X-Served-By \$HOSTNAME;",
+  after  => "^\\s*location / {"
 }
 
 service {'nginx':
