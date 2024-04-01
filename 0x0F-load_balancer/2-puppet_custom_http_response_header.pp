@@ -1,26 +1,24 @@
 # setup server to include custom HTTP header
-exec {'update apt':
+exec {'update':
   provider => shell,
-  command  => 'apt-get -y update',
+  command  => 'sudo apt-get -y update',
+  before   => Exec['install Nginx'],
 }
 
-package {'nginx':
-  ensure  => installed,
+exec {'install Nginx':
+  provider => shell,
+  command  => 'sudo apt-get -y install nginx',
+  before   => Exec['add_header'],
 }
 
-$string = "server {
-	listen 80 default_server;
-	location / {
-		add_header X-Served-By \$HOSTNAME;
-	}
-}"
-
-file {'/etc/nginx/sites-available/default':
-  ensure  => present,
-  content => $string
+exec { 'add_header':
+  provider    => shell,
+  environment => ["HOST=${hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
+  before      => Exec['restart Nginx'],
 }
 
-service {'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+exec { 'restart Nginx':
+  provider => shell,
+  command  => 'sudo service nginx restart',
 }
