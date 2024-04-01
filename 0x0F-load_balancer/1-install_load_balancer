@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
 # Install load balancer on lb-01 server
-apt-get update -y
-apt-get install haproxy -y
+apt-get -y update
+apt-get -y install haproxy
 
 echo "
 frontend listener
-	bind *:80
-	mode http
-	default_backend web-backend
+        bind *:80
+        default_backend web-backend
 
 backend web-backend
-	balance roundrobin
-	mode http
-	server 203035-web-01 52.206.61.240:80 check
-	server 203035-web-02 54.144.158.52:80 check
+        balance roundrobin
+        server 203035-web-01 52.206.61.240:80 check
+        server 203035-web-02 54.144.158.52:80 check
 " >> /etc/haproxy/haproxy.cfg
 
-sudo systemctl restart haproxy
+sudo service haproxy start
