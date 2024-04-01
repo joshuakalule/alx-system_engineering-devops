@@ -1,34 +1,37 @@
 # setup server to include custom HTTP header
 
 package {'nginx':
-  ensure => installed,
+  ensure   => installed,
 }
 
 $config_string = "server {
-    listen 80 default_server;
+	listen 80 default_server;
     root /var/www/html;
-    error_page 404 /not_found.html;
-    add_header X-Served-By \${HOSTNAME};
+	add_header X-Served-By \$HOSTNAME;
     location /redirect_me {
-        return 301 https://www.bing.com;
-    }
-    location / {
-        index index.htm index.html;
-    }
+		return 301 https://www.bing.com;
+	}
+	location / {
+		index index.html index.htm;
+	}
+	error_page 404 /not_found.html;
 }"
 
-file {'/etc/nginx/sites-available/default':
+file {'config_file':
   ensure  => present,
+  path    => '/etc/nginx/sites-available/default',
   content => $config_string,
 }
 
-file {'/var/www/html/index.html':
+file {'index page':
   ensure  => present,
-  content => 'Hello World!'
+  path    => '/var/www/html/index.html',
+  content => 'Hello World!',
 }
 
-file {'/var/www/html/not_found.html':
+file {'not_found page':
   ensure  => present,
+  path    => '/var/www/html/not_found.html',
   content => "Ceci n'est pas une page",
 }
 
