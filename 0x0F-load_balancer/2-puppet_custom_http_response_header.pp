@@ -8,7 +8,7 @@ $config_string = "server {
     listen 80 default_server;
     root /var/www/html;
     error_page 404 /not_found.html;
-    add_header X-Served-By ${HOSTNAME};
+    add_header X-Served-By \${HOSTNAME};
     location /redirect_me {
         return 301 https://www.bing.com;
     }
