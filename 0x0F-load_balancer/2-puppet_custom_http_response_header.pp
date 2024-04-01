@@ -7,25 +7,24 @@ exec {'update apt':
 
 package {'nginx':
   ensure  => installed,
-  require => Exec['sudo apt-get update'],
+  require => Exec['update apt'],
 }
 
 $config_string = "server {
-	listen 80 default_server;
+    listen 80 default_server;
     root /var/www/html;
-	add_header X-Served-By \$HOSTNAME;
+    add_header X-Served-By \$HOSTNAME;
     location /redirect_me {
-		return 301 https://www.bing.com;
-	}
-	location / {
-		index index.html index.htm;
-	}
-	error_page 404 /not_found.html;
+        return 301 https://www.bing.com;
+    }
+    location / {
+        index index.html index.htm;
+    }
+    error_page 404 /not_found.html;
 }"
 
-file {'config_file':
+file {'/etc/nginx/sites-available/default':
   ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
   content => $config_string,
 }
 
