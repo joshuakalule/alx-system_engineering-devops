@@ -1,7 +1,8 @@
 # setup server to include custom HTTP header
 
-exec {'sudo apt-get update':
-  path => ['/usr/bin', '/usr/sbin',],
+exec {'update apt':
+  provider => shell,
+  command  => 'sudo apt-get -y update',
 }
 
 package {'nginx':
