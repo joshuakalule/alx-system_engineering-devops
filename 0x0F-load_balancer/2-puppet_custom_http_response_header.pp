@@ -1,46 +1,19 @@
 # setup server to include custom HTTP header
-
-exec {'update apt':
-  provider => shell,
-  command  => 'apt-get -y update',
+package { 'nginx':
+  ensure => installed,
 }
 
-package {'nginx':
-  ensure  => installed,
-  require => Exec['update apt'],
-}
-
-$config_string = "server {
-    listen 80 default_server;
-    root /var/www/html;
-    add_header X-Served-By \$HOSTNAME;
-    location /redirect_me {
-        return 301 https://www.bing.com;
-    }
-    location / {
-        index index.html index.htm;
-    }
-    error_page 404 /not_found.html;
-}"
-
-file {'/etc/nginx/sites-available/default':
+file_line { 'custom_http_header':
   ensure  => present,
-  content => $config_string,
-}
-
-file {'index page':
-  ensure  => present,
-  path    => '/var/www/html/index.html',
-  content => 'Hello World!',
-}
-
-file {'not_found page':
-  ensure  => present,
-  path    => '/var/www/html/not_found.html',
-  content => "Ceci n'est pas une page",
-}
-
-service {'nginx':
-  ensure  => running,
+  path    => '/etc/nginx/sites-available/default',
+  line    => 'add_header X-Served-By $hostname;',
+  match   => '^add_header X-Served-By',
   require => Package['nginx'],
+  notify  => Service['nginx'],
+}
+
+service { 'nginx':
+  ensure  => running,
+  enable  => true,
+  require => File_line['custom_http_header'],
 }
