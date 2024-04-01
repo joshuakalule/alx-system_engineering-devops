@@ -8,19 +8,19 @@ package {'nginx':
   ensure  => installed,
 }
 
+$string = "server {
+	listen 80 default_server;
+	location / {
+		add_header X-Served-By \$HOSTNAME;
+	}
+}"
+
 file {'/etc/nginx/sites-available/default':
   ensure  => present,
-}
-
-file_line {'add_header':
-  ensure => present,
-  path   => '/etc/nginx/sites-available/default',
-  line   => "\t\tadd_header X-Served-By \$HOSTNAME;",
-  after  => "^\\s*location / {"
+  content => $string
 }
 
 service {'nginx':
   ensure  => running,
-  enable  => true,
   require => Package['nginx'],
 }
