@@ -1,7 +1,12 @@
 # setup server to include custom HTTP header
 
+exec {'sudo apt-get update':
+  path => ['/usr/bin', '/usr/sbin',],
+}
+
 package {'nginx':
-  ensure   => installed,
+  ensure  => installed,
+  require => Exec['sudo apt-get update'],
 }
 
 $config_string = "server {
