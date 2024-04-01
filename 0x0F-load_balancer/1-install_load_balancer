@@ -2,6 +2,7 @@
 # Install load balancer on lb-01 server
 sudo apt-get install --no-install-recommends software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.8
+sudo apt-get update
 sudo apt-get install haproxy=2.8.\*
 
 echo "
