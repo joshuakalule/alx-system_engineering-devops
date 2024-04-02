@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
 # debug curl error: 'Failed to connect to 0 port 80: Connection refused'
-sudo apt install nginx
-sudo service nginx restart
+echo "server {
+             listen 80 default_server;
+             listen [::]:80 default_server;
+
+             root /usr/share/nginx/html;
+             index index.html index.htm;
+
+             server_name localhost;
+
+             location / {
+                 index index.html;
+             }
+
+}" > "/etc/nginx/sites-available/default"
+/usr/sbin/nginx
