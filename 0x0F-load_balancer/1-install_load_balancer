@@ -10,8 +10,8 @@ frontend listener
 
 backend web-backend
         balance roundrobin
-        server 203035-web-01 52.206.61.240:80 check
-        server 203035-web-02 54.144.158.52:80 check
+        server 203035-web-01 100.26.17.58:80 check
+        server 203035-web-02 35.168.8.71:80 check
 " >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy start
