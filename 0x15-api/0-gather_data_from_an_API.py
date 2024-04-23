@@ -4,8 +4,8 @@ Gather data from an API
 Queries 'https://jsonplaceholder.typicode.com/' for a given employee ID
 Return employee information
 """
-import sys
 import requests
+import sys
 
 API_URL = 'https://jsonplaceholder.typicode.com'
 
