@@ -19,7 +19,7 @@ def get_tasks(employee_id):
     return {}
 
 
-def employee_get(employee_id, key=None):
+def employee_get(employee_id, key):
     """Get the key of the employee."""
     resp = requests.get(f"{API_URL}/users/{employee_id}")
     if resp:
