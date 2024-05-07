@@ -20,6 +20,7 @@ def top_ten(subreddit):
     found = resp.json()
     if subreddit not in found['names']:
         print(None)
+        return
 
     sub_url = f'https://www.reddit.com/r/{subreddit}.json'
     sub_resp = requests.get(
@@ -28,6 +29,7 @@ def top_ten(subreddit):
 
     if sub_resp.status_code != 200:
         print(None)
+        return
     data = sub_resp.json()
     # print(json.dumps(data))
 
