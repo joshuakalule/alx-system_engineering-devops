@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Queries the Reddit API."""
 import requests
-import json
 
 
 def number_of_subscribers(subreddit):
@@ -30,5 +29,5 @@ def number_of_subscribers(subreddit):
         return 0
     data = sub_resp.json()
     # print(json.dumps(data))
-    subscribers = data['data']['subscribers']
+    subscribers = int(data['data']['subscribers'])
     return subscribers
