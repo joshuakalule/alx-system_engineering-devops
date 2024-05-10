@@ -1,7 +1,5 @@
 # Resolve apache 500 error
-file-line {'/var/www/html/wp-settings.php':
-  ensure             => present,
-  match              => "require_once( ABSPATH . WPINC . '/class-wp-locale.phpp' );",
-  line               => "require_once( ABSPATH . WPINC . '/class-wp-locale.php' );",
-  append_on_no_match => false
+exec {'fix_name':
+  command => 'sed -i s/phpp/php/g var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
