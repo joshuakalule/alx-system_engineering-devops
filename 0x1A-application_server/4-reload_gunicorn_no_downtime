@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Get the Gunicorn master process ID
+MASTER_PID=$(pgrep -f "gunicorn.*web_dynamic.2-hbnb:app")
+
+if [ -n "$MASTER_PID" ]; then
+    echo "Reloading Gunicorn gracefully (PID: $MASTER_PID)..."
+    # Send the HUP signal to the master process
+    kill -HUP "$MASTER_PID"
+    echo "Graceful reload initiated."
+else
+    echo "Error: Gunicorn master process not found."
+fi
