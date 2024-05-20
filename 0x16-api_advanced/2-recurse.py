@@ -1,40 +1,32 @@
 #!/usr/bin/python3
 """return list of titles for hot articles"""
-import json
 import requests
-import sys
 
 
-def recurse(subreddit, pop_list=[], after=None):
-    """return hot article titles"""
+def recurse(subreddit, hot_list=[], after=None):
+    """
+    Returns a list containing the titles of all hot articles
+    for a given subreddit
+    """
+    app_name = '0x16-api_advanced'
+    user_name = 'FeelingPsychology300'
+    headers = {'User-Agent': f'{app_name}/0.0.1 by /u/{user_name}'}
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    params = {'after': after}
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0'
-    }
-
-    params = {
-        'exact': True,
-        'query': subreddit
-    }
-
-    verify = requests.get(
-        'https://www.reddit.com/api/search_reddit_names.json',
-        headers=headers, params=params)
-
-    if 'error' in verify.json().keys():
+    if response.status_code != 200:
         return None
 
-    params = {
-        'after': after
-    }
+    data = response.json().get('data')
+    after = data.get('after')
+    children = data.get('children')
 
-    rObj = requests.get('https://www.reddit.com/r/' + subreddit + '.json',
-                        headers=headers, params=params)
+    for child in children:
+        hot_list.append(child.get('data').get('title'))
 
-    for listi in rObj.json()['data']['children']:
-        pop_list.append(listi['data']['title'])
+    if after is not None:
+        return recurse(subreddit, hot_list, after)
 
-    if rObj.json()['data']['after'] is None:
-        return pop_list
-
-    return recurse(subreddit, pop_list, rObj.json()['data']['after'])
+    return hot_list
